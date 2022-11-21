@@ -44,10 +44,10 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++14" />
 			<Add option="-fexceptions" />
-			<Add directory="D:/Bibliotecas/Documentos/_Programming Libraries/SFML-2.5.1/include" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
-			<Add directory="D:/Bibliotecas/Documentos/_Programming Libraries/SFML-2.5.1/lib" />
+			<Add directory="lib/SFML" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h">
@@ -64,9 +64,6 @@
 		<Unit filename="sfml-window-2.dll" />
 		<Unit filename="sfml-window-d-2.dll" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<wxsmith version="1">
 				<resources>
 					<wxFrame wxs="wxsmith/NewFrame.wxs" src="NewFrame.cpp" hdr="NewFrame.h" fwddecl="0" i18n="1" name="NewFrame" language="CPP" />

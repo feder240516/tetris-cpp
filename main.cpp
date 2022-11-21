@@ -312,7 +312,7 @@ void SimpleButton::onClick(){
     if (clickFunctionptr != nullptr){
         clickFunctionptr(this);
     } else{
-        std::cout << "No se ha asignado ninguna funcion a este boton\n";
+        //std::cout << "No se ha asignado ninguna funcion a este boton\n";
     }
 }
 
@@ -432,7 +432,7 @@ void Game::startApp(){
                     if((*i)->checkClick(window.mapPixelToCoords(sf::Mouse::getPosition(window)))){
                         (*i)->onClick();
                     }
-                    std::cout << "clickable:" << (*i)->checkClick(window.mapPixelToCoords(sf::Mouse::getPosition(window))) << std::endl;
+                    //std::cout << "clickable:" << (*i)->checkClick(window.mapPixelToCoords(sf::Mouse::getPosition(window))) << std::endl;
                 }
             }
         }
@@ -448,7 +448,7 @@ void Game::startApp(){
         window.display();
         //std::cout << "Block count:" << Block::block_count << std::endl;
     }
-    std::cout << SimpleButton::button_counter << std::endl;
+    //std::cout << SimpleButton::button_counter << std::endl;
     setStartButton(nullptr);
 }
 
@@ -464,6 +464,6 @@ MAIN
 int main()
 {
     Game game;
-    game->startApp();
+    game.startApp();
     return EXIT_SUCCESS;
 }

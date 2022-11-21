@@ -65,7 +65,6 @@ public:
             block_sprite.setScale(((float)BLOCK_SIZE)/Block::block_texture.getSize().x,((float)BLOCK_SIZE)/Block::block_texture.getSize().y);
         }
         block_count++;
-        std::cout << "Block created" << std::endl;
     };
     Block(const Block &o):x(o.x),y(o.y),enabled(o.enabled),block_sprite(o.block_sprite){
         block_count++;
@@ -73,7 +72,6 @@ public:
     }
     ~Block(){
         block_count--;
-        std::cout << "Block destroyed" << std::endl;
     }
     const int getX(){return x;}
     const int getY(){return y;}
@@ -115,14 +113,16 @@ public:
      * Esta clase es heredada por los diferentes tipos de piezas, y ellas son las que llaman este
      * constructor.
      */
-    Shape(int nx = 0,int ny = 1, int nx1 = 1, int ny1 = 0, int nx2 = -1, int ny2 = 0, int nx3 = 1, int ny3 = 1,const sf::Color &ncolor = sf::Color::White, int nrotate_mode = RotateModes::FULLROTATE):
+    Shape(int nx = 0,int ny = 1, int nx1 = 1, int ny1 = 0,
+          int nx2 = -1, int ny2 = 0, int nx3 = 1, int ny3 = 1,
+          const sf::Color &ncolor = sf::Color::White, int nrotate_mode = RotateModes::FULLROTATE):
                 blocks{new Block(nx,ny,true,ncolor),
                        new Block(nx+nx1,ny+ny1,true,ncolor),
                        new Block(nx+nx2,ny+ny2,true,ncolor),
                        new Block(nx+nx3,ny+ny3,true,ncolor)},
                 rotate_mode(nrotate_mode),
-                rotate_state(0){shape_count++;std::cout << "Shape created!  Shape count: " << Shape::shape_count << std::endl;}
-    ~Shape(){shape_count--;std::cout << "Shape deleted!  Shape count: " << Shape::shape_count << std::endl;}
+                rotate_state(0){shape_count++;}
+    ~Shape(){shape_count--;}
     void drawTo (sf::RenderWindow &window);
     bool move(int nx,int ny);
     bool canmove(int nx, int ny);
@@ -290,6 +290,7 @@ public:
 class NextShape{
 protected:
     Shape *next_shape;
+
 public:
     /**
      * Cada vez que se crea este objeto, inmediatamente crea una Shape a la cual hace referencia,
